@@ -9,7 +9,7 @@ export interface PokemonName
 {
   name: string;
   url: string;
-  kek: string;
+  
   
 }
 
