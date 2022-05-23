@@ -1,49 +1,34 @@
-
 <div class="container">
-       <div class="div1">
-              <div class="titulo">Pokedex</div>
-              <div class="search">
-              <input class="search-txt" placeholder="Pesquisar..." [(ngModel)]="search" (keyup.enter)="getSearch($event)"  />
-              </div>
-              <div class=" lista" *ngIf="pesquisa">
-                <app-pokemon-card
-                *ngFor="let pokemon of pesquisa;"
-                (click)="loadType(pokemon.name)"
-                [pokemon]="pokemon">
-                </app-pokemon-card>
-              </div>
-       </div>
-       <div class="div2">
-              <div *ngIf="pokemon" class="info">
-                     <div class="foto">
-                            <img [src]="pokemon.sprites.other.dream_world.front_default" width="80px" height="80px">
-                                   <div class="titulo"><h1>{{pokemon.name}}</h1></div>
-                                   <div class="titulo"><b>Ability:</b></div>
-                                   <div class="titulo"*ngFor="let habilidades of pokemon.abilities">
-                                   <ul>
-                                          <li>{{habilidades.ability.name}}</li>
-                                   </ul>
-                                  </div>
-                                   <div class="titulo"><b>Type:</b></div>
-                                   <div class="titulo"*ngFor="let tipos of pokemon.types">
-                                          <ul>
-                                                 <li>{{tipos.type.name}}</li>
-                                          </ul>       
-                                   </div>
-                     </div>
-                     
-              </div>
-       </div>
-        
-   
+    <div class="div1">
+        <div class="titulo">
+            <h1>
+                Pokedex
+            </h1>
+        </div>
+        <input class="search-txt" placeholder="Pesquisar..." [(ngModel)]="search" (keyup.enter)="getSearch($event)" />
+        <div class="lista" *ngIf="pesquisa">
+            <app-pokemon-card *ngFor="let pokemon of pesquisa" (click)="loadType(pokemon.name)" [pokemon]="pokemon">
+            </app-pokemon-card>
+        </div>
+    </div>
+    <div *ngIf="pokemon" class="info">
+        <img [src]="pokemon.sprites.other.dream_world.front_default" width="150px" height="150px" />
+        <h2>
+            {{ pokemon.name }}
+        </h2>
+        <b>
+            Ability:
+        </b>
+        <div class="ability" *ngFor="let habilidades of pokemon.abilities">
+            <ul>
+                <li>{{ habilidades.ability.name }}</li>
+            </ul>
+        </div>
+        <b> Type: </b>
+        <div class="types" *ngFor="let tipos of pokemon.types">
+            <ul>
+                <li>{{ tipos.type.name }}</li>
+            </ul>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
